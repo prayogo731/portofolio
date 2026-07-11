@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="classic">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Prayogo Pangestu — Front-End Developer</title>
+<meta id="pageDesc" name="description" content="Portfolio of Prayogo Pangestu, a Front-End Developer with a Minecraft x Batman theme.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@400;500;600;700&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= LOADER ================= -->
+<div class="loader" id="loader">
+  <div class="loader-cube">
+    <div class="face front"></div>
+    <div class="face back"></div>
+    <div class="face right"></div>
+    <div class="face left"></div>
+    <div class="face top"></div>
+    <div class="face bottom"></div>
+  </div>
+  <p class="loader-text"><span data-i18n="loader_text">BUILDING WORLD</span><span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+</div>
+
+<!-- ================= BACKGROUND FX ================= -->
+<canvas id="bg-canvas"></canvas>
+<div class="scanline-overlay"></div>
+<div class="vignette"></div>
+
+<!-- ================= CURSOR ================= -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+  <a href="#home" class="nav-logo">
+    <img src="assets/logo.svg" alt="Prayogo Pangestu logo" class="nav-logo-img">
+    <span class="nav-logo-text">PRAYOGO<span class="accent">.DEV</span></span>
+  </a>
+
+  <nav class="nav-links" id="navLinks">
+    <a href="#home" class="nav-link active" data-i18n="nav_home">HOME</a>
+    <a href="#about" class="nav-link" data-i18n="nav_about">ABOUT</a>
+    <a href="#skills" class="nav-link" data-i18n="nav_skills">SKILLS</a>
+    <a href="#projects" class="nav-link" data-i18n="nav_projects">PROJECTS</a>
+    <a href="#contact" class="nav-link" data-i18n="nav_contact">CONTACT</a>
+
+    <div class="nav-toggles nav-toggles-mobile">
+      <button class="toggle-btn" id="langToggleMobile" data-i18n-aria="lang_toggle_aria" aria-label="Switch language">
+        <span class="toggle-icon">🌐</span><span id="langLabelMobile">EN</span>
+      </button>
+      <button class="toggle-btn" id="themeToggleMobile" data-i18n-aria="theme_toggle_aria" aria-label="Switch color theme">
+        <span class="toggle-icon">🎨</span><span id="themeLabelMobile">CLASSIC</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-toggles nav-toggles-desktop">
+    <button class="toggle-btn" id="langToggle" data-i18n-aria="lang_toggle_aria" aria-label="Switch language">
+      <span class="toggle-icon">🌐</span><span id="langLabel">EN</span>
+    </button>
+    <button class="toggle-btn" id="themeToggle" data-i18n-aria="theme_toggle_aria" aria-label="Switch color theme">
+      <span class="toggle-icon">🎨</span><span id="themeLabel">CLASSIC</span>
+    </button>
+  </div>
+
+  <button class="burger" id="burger" data-i18n-aria="burger_aria" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="hero">
+  <div class="hero-particles" id="heroParticles"></div>
+
+  <div class="hero-badge">
+    <span class="badge-block"></span> <span data-i18n="hero_badge">FRONT-END DEVELOPER · WORLD BUILDER</span>
+  </div>
+
+  <div class="hero-cube-wrap" id="heroCubeWrap">
+    <div class="hero-cube" id="heroCube">
+      <div class="hcube-face hcube-front"><img src="assets/logo.svg" alt=""></div>
+      <div class="hcube-face hcube-back">PP</div>
+      <div class="hcube-face hcube-right"></div>
+      <div class="hcube-face hcube-left"></div>
+      <div class="hcube-face hcube-top"></div>
+      <div class="hcube-face hcube-bottom"></div>
+    </div>
+    <div class="cube-shadow"></div>
+  </div>
+
+  <h1 class="hero-title">
+    <span class="line line-1"><span class="glitch" data-text="PRAYOGO">PRAYOGO</span></span>
+    <span class="line line-2"><span class="glitch" data-text="PANGESTU">PANGESTU</span></span>
+  </h1>
+
+  <p class="hero-subtitle" data-i18n-html="hero_subtitle">
+    Building web interfaces <span class="hl-green">block by block</span>,
+    with the precision of a <span class="hl-yellow">dark knight</span>.
+  </p>
+
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">
+      <span class="btn-icon">⛏</span> <span data-i18n="hero_cta_projects">VIEW PROJECTS</span>
+    </a>
+    <a href="#contact" class="btn btn-ghost">
+      <span class="btn-icon">🦇</span> <span data-i18n="hero_cta_contact">CONTACT ME</span>
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    <span data-i18n="hero_scroll">SCROLL</span>
+    <div class="scroll-line"><div class="scroll-dot"></div></div>
+  </div>
+
+  <div class="hero-grid-floor"></div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="about">
+  <div class="section-heading">
+    <span class="section-eyebrow" data-i18n="about_eyebrow">// 01 — PERSONAL DATA</span>
+    <h2 class="section-title" data-i18n-html="about_title">ABOUT <span class="accent">ME</span></h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-portrait">
+      <div class="portrait-frame">
+        <div class="frame-corner tl"></div>
+        <div class="frame-corner tr"></div>
+        <div class="frame-corner bl"></div>
+        <div class="frame-corner br"></div>
+        <div class="frame-scan"></div>
+        <img src="assets/profile.jpg" alt="Photo of Prayogo Pangestu" class="portrait-img">
+        <div class="portrait-glow"></div>
+        <div class="portrait-tag">LV. 24 · FRONT-END BUILDER</div>
+      </div>
+      <div class="portrait-base">
+        <span class="base-dot"></span> <span data-i18n="about_status">STATUS: ONLINE &amp; OPEN FOR WORK</span>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <p class="about-lead" data-i18n-html="about_lead">
+        Hi, I'm <strong>Prayogo Pangestu</strong> — a front-end developer who loves
+        assembling web interfaces like building blocks in an open world, then giving them
+        the edge and style of a dark hero.
+      </p>
+      <p data-i18n-html="about_body">
+        I focus on <strong>HTML, CSS, and JavaScript</strong> to build websites
+        that are not only structurally clean, but also alive through animation, interaction,
+        and refined visual detail. Every project follows the same principle:
+        build a strong foundation first, then layer stunning effects on top.
+      </p>
+
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-num" data-count="3">0</span><span class="stat-plus">+</span>
+          <span class="stat-label" data-i18n="about_stat1">Years Learning to Code</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-count="8">0</span><span class="stat-plus">+</span>
+          <span class="stat-label" data-i18n="about_stat2">Projects Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-count="100">0</span><span class="stat-plus">%</span>
+          <span class="stat-label" data-i18n="about_stat3">Willingness to Keep Learning</span>
+        </div>
+      </div>
+
+      <div class="about-inventory">
+        <div class="inv-slot" title="HTML"><span class="inv-icon">🧱</span><span>HTML</span></div>
+        <div class="inv-slot" title="CSS"><span class="inv-icon">🎨</span><span>CSS</span></div>
+        <div class="inv-slot" title="JavaScript"><span class="inv-icon">⚡</span><span>JS</span></div>
+        <div class="inv-slot" title="Focus"><span class="inv-icon">🦇</span><span data-i18n="about_inv_detail">DETAIL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="skills">
+  <div class="section-heading center">
+    <span class="section-eyebrow" data-i18n="skills_eyebrow">// 02 — CRAFTING TABLE</span>
+    <h2 class="section-title" data-i18n-html="skills_title">MY <span class="accent">SKILLS</span></h2>
+    <p class="section-desc" data-i18n="skills_desc">Three core ingredients I mix every time I "craft" a website.</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card" style="--delay:0s">
+      <div class="skill-block html-block">
+        <div class="block-face block-top"></div>
+        <div class="block-face block-front"><span>HTML5</span></div>
+        <div class="block-face block-side"></div>
+      </div>
+      <h3>HTML</h3>
+      <p data-i18n="skill_html_desc">Semantic structure &amp; a solid foundation for every page — the basic block of everything.</p>
+      <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
+    </div>
+
+    <div class="skill-card" style="--delay:.15s">
+      <div class="skill-block css-block">
+        <div class="block-face block-top"></div>
+        <div class="block-face block-front"><span>CSS3</span></div>
+        <div class="block-face block-side"></div>
+      </div>
+      <h3>CSS</h3>
+      <p data-i18n="skill_css_desc">Animation, 3D layouts, and visual detail — how I give every element its bat-signal glow.</p>
+      <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
+    </div>
+
+    <div class="skill-card" style="--delay:.3s">
+      <div class="skill-block js-block">
+        <div class="block-face block-top"></div>
+        <div class="block-face block-front"><span>JS</span></div>
+        <div class="block-face block-side"></div>
+      </div>
+      <h3>JavaScript</h3>
+      <p data-i18n="skill_js_desc">Interaction &amp; logic — the engine behind every move, like gadgets on a utility belt.</p>
+      <div class="skill-bar"><div class="skill-fill" style="--w:82%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="projects">
+  <div class="section-heading center">
+    <span class="section-eyebrow" data-i18n="projects_eyebrow">// 03 — CASE FILES</span>
+    <h2 class="section-title" data-i18n-html="projects_title">MY <span class="accent">PROJECTS</span></h2>
+    <p class="section-desc" data-i18n-html="projects_desc">
+      8 selected projects. Swap the image &amp; project name directly in the HTML code —
+      look for the <code>&lt;!-- REPLACE HERE --&gt;</code> comment on each card.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 1 -->
+    <article class="project-card">
+      <div class="card-tag">FILE #01</div>
+      <div class="project-img-wrap">
+        <!-- REPLACE HERE: project 1 image src -->
+        <img src="assets/resto.png" alt="Project 1 name" class="project-img">
+        <div class="project-overlay">
+          <a href="https://prayogo731.github.io/resto/" class="overlay-btn" target="_blank" rel="noopener" data-i18n="overlay_view">VIEW ▸</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <!-- REPLACE HERE: project 1 name -->
+        <h3 class="project-name">Restaurant Website</h3>
+        <!-- REPLACE HERE: project 1 description -->
+        <p class="project-desc">A modern restaurant website showcasing menus and information with a responsive design.</p>
+        <div class="project-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 2 -->
+    <article class="project-card">
+      <div class="card-tag">FILE #02</div>
+      <div class="project-img-wrap">
+        <!-- REPLACE HERE: project 2 image src -->
+        <img src="assets/color.png" alt="Project 2 name" class="project-img">
+        <div class="project-overlay">
+          <a href="https://prayogo731.github.io/colorcraft/" class="overlay-btn" target="_blank" rel="noopener" data-i18n="overlay_view">VIEW ▸</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <!-- REPLACE HERE: project 2 name -->
+        <h3 class="project-name">Color Craft</h3>
+        <!-- REPLACE HERE: project 2 description -->
+        <p class="project-desc">A color palette generator website to create and explore colors with a modern design.
+Available worldwide (online).</p>
+        <div class="project-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 3 -->
+    <article class="project-card">
+      <div class="card-tag">FILE #03</div>
+      <div class="project-img-wrap">
+        <!-- REPLACE HERE: project 3 image src -->
+        <img src="assets/ecomerce.png" alt="Project 3 name" class="project-img">
+        <div class="project-overlay">
+          <a href="https://prayogo731.github.io/ecomerce/" class="overlay-btn" target="_blank" rel="noopener" data-i18n="overlay_view">VIEW ▸</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <!-- REPLACE HERE: project 3 name -->
+        <h3 class="project-name">ecomerce</h3>
+        <!-- REPLACE HERE: project 3 description -->
+        <p class="project-desc">A simple e-commerce website to display products and prices with a modern design.
+Available worldwide (online).</p>
+        <div class="project-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 4 -->
+    <article class="project-card">
+      <div class="card-tag">FILE #04</div>
+      <div class="project-img-wrap">
+        <!-- REPLACE HERE: project 4 image src -->
+        <img src="assets/jasa.png" alt="Project 4 name" class="project-img">
+        <div class="project-overlay">
+          <a href="https://prayogo731.github.io/jasa/" class="overlay-btn" target="_blank" rel="noopener" data-i18n="overlay_view">VIEW ▸</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <!-- REPLACE HERE: project 4 name -->
+        <h3 class="project-name">Web Development Service</h3>
+        <!-- REPLACE HERE: project 4 description -->
+        <p class="project-desc">A web development service website offering modern and professional website solutions.
+Located in Jakarta.</p>
+        <div class="project-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 5 -->
+    <article class="project-card">
+      <div class="card-tag">FILE #05</div>
+      <div class="project-img-wrap">
+        <!-- REPLACE HERE: project 5 image src -->
+        <img src="assets/cuaca.png" alt="Project 5 name" class="project-img">
+        <div class="project-overlay">
+          <a href="https://prayogo731.github.io/cuaca/" class="overlay-btn" target="_blank" rel="noopener" data-i18n="overlay_view">VIEW ▸</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <!-- REPLACE HERE: project 5 name -->
+        <h3 class="project-name">Weather App</h3>
+        <!-- REPLACE HERE: project 5 description -->
+        <p class="project-desc">A weather website that displays temperature, conditions, and real-time forecasts.
+Available worldwide (online).</p>
+        <div class="project-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 6 -->
+    <article class="project-card">
+      <div class="card-tag">FILE #06</div>
+      <div class="project-img-wrap">
+        <!-- REPLACE HERE: project 6 image src -->
+        <img src="assets/travel.png" alt="Project 6 name" class="project-img">
+        <div class="project-overlay">
+          <a href="https://prayogo731.github.io/travel/" class="overlay-btn" target="_blank" rel="noopener" data-i18n="overlay_view">VIEW ▸</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <!-- REPLACE HERE: project 6 name -->
+        <h3 class="project-name">Travel Website</h3>
+        <!-- REPLACE HERE: project 6 description -->
+        <p class="project-desc">A travel website showcasing destinations, tour packages, and vacation information with an attractive design.
+Available worldwide (online).</p>
+        <div class="project-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 7 -->
+    <article class="project-card">
+      <div class="card-tag">FILE #07</div>
+      <div class="project-img-wrap">
+        <!-- REPLACE HERE: project 7 image src -->
+        <img src="assets/frontend.png" alt="Project 7 name" class="project-img">
+        <div class="project-overlay">
+          <a href="https://prayogo731.github.io/porto8.1/" class="overlay-btn" target="_blank" rel="noopener" data-i18n="overlay_view">VIEW ▸</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <!-- REPLACE HERE: project 7 name -->
+        <h3 class="project-name">Front-End Portfolio</h3>
+        <!-- REPLACE HERE: project 7 description -->
+        <p class="project-desc">A front-end portfolio website to showcase projects with a modern and responsive design.
+Available worldwide (online).</p>
+        <div class="project-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 8 -->
+    <article class="project-card">
+      <div class="card-tag">FILE #08</div>
+      <div class="project-img-wrap">
+        <!-- REPLACE HERE: project 8 image src -->
+        <img src="assets/backend.png" alt="Project 8 name" class="project-img">
+        <div class="project-overlay">
+          <a href="https://prayogo731.github.io/porto8.2/" class="overlay-btn" target="_blank" rel="noopener" data-i18n="overlay_view">VIEW ▸</a>
+        </div>
+      </div>
+      <div class="project-body">
+        <!-- REPLACE HERE: project 8 name -->
+        <h3 class="project-name">Back-End System</h3>
+        <!-- REPLACE HERE: project 8 description -->
+        <p class="project-desc">A backend system to manage data including CRUD operations, database, and APIs with a well-structured architecture.
+Available worldwide (online).</p>
+        <div class="project-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="contact-signal" id="contactSignal"></div>
+  <div class="section-heading center">
+    <span class="section-eyebrow" data-i18n="contact_eyebrow">// 04 — EMERGENCY SIGNAL</span>
+    <h2 class="section-title" data-i18n-html="contact_title">CONTACT <span class="accent">ME</span></h2>
+    <p class="section-desc" data-i18n="contact_desc">Light up the bat-signal — let's talk about your next project.</p>
+  </div>
+
+  <div class="contact-grid">
+    <a href="https://wa.me/6283140449734" target="_blank" rel="noopener" class="contact-card">
+      <div class="contact-icon">💬</div>
+      <h3>WhatsApp</h3>
+      <p>083140449734</p>
+      <span class="contact-arrow">→</span>
+    </a>
+
+    <a href="https://instagram.com/prayogo8840" target="_blank" rel="noopener" class="contact-card">
+      <div class="contact-icon">📷</div>
+      <h3>Instagram</h3>
+      <p>@prayogo8840</p>
+      <span class="contact-arrow">→</span>
+    </a>
+
+    <a href="mailto:akunjuniorff@gmail.com" class="contact-card">
+      <div class="contact-icon">✉️</div>
+      <h3>Gmail</h3>
+      <p>akunjuniorff@gmail.com</p>
+      <span class="contact-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <img src="assets/logo.svg" alt="Logo" class="footer-logo">
+  <p><span data-i18n="footer_pre">© </span><span id="year"></span><span data-i18n="footer_text"> Prayogo Pangestu — Built block by block, guarded in the dark.</span></p>
+  <a href="#home" class="back-to-top" aria-label="Back to top">▲</a>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
