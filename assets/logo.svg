@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f2c14e"/>
+      <stop offset="100%" stop-color="#6b9c3f"/>
+    </linearGradient>
+  </defs>
+  <!-- pixel bat wings -->
+  <g fill="#0a0e14">
+    <rect x="0" y="90" width="200" height="20"/>
+  </g>
+  <g fill="url(#logoGrad)">
+    <rect x="20" y="70" width="20" height="20"/>
+    <rect x="40" y="90" width="20" height="20"/>
+    <rect x="60" y="70" width="20" height="20"/>
+    <rect x="80" y="50" width="20" height="80"/>
+    <rect x="100" y="50" width="20" height="80"/>
+    <rect x="120" y="70" width="20" height="20"/>
+    <rect x="140" y="90" width="20" height="20"/>
+    <rect x="160" y="70" width="20" height="20"/>
+  </g>
+</svg>
